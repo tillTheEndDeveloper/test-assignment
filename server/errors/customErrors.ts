@@ -1,30 +1,35 @@
-class ValidationError extends Error {
-    constructor(message: string) {
-      super(message);
-      this.name = 'ValidationError';
-    }
+import { ErrorTypes } from './errorTypes';
+import { ErrorMessages } from './errorMessages';
+
+class BaseAppError extends Error {
+  constructor(public message: ErrorMessages, public name: ErrorTypes) {
+    super(message);
+    this.stack = new Error().stack;
   }
-  
-  class ConflictError extends Error {
-    constructor(message: string) {
-      super(message);
-      this.name = 'ConflictError';
-    }
+}
+
+class ValidationError extends BaseAppError {
+  constructor(message: ErrorMessages) {
+    super(message, 'ValidationError');
   }
-  
-  class AuthenticationError extends Error {
-    constructor(message: string) {
-      super(message);
-      this.name = 'AuthenticationError';
-    }
+}
+
+class ConflictError extends BaseAppError {
+  constructor(message: ErrorMessages) {
+    super(message, 'ConflictError');
   }
-  
-  class NotFoundError extends Error {
-    constructor(message: string) {
-      super(message);
-      this.name = 'NotFoundError';
-    }
+}
+
+class AuthenticationError extends BaseAppError {
+  constructor(message: ErrorMessages) {
+    super(message, 'AuthenticationError');
   }
-  
-  export { ValidationError, ConflictError, AuthenticationError, NotFoundError };
-  
+}
+
+class NotFoundError extends BaseAppError {
+  constructor(message: ErrorMessages) {
+    super(message, 'NotFoundError');
+  }
+}
+
+export { ValidationError, ConflictError, AuthenticationError, NotFoundError };

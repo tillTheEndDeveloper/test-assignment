@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
+import { ErrorTypes } from '../errors/errorTypes';
+import { AppError } from '../errors/IAppError';
 
-function errorHandler(err: Error, req: Request, res: Response, next: NextFunction) {
+function errorHandler(err: { name: ErrorTypes; message: string; stack?: string }, req: any, res: any, next: any) {
   switch (err.name) {
     case 'ValidationError':
       return res.status(400).json({ message: err.message });
@@ -15,5 +17,6 @@ function errorHandler(err: Error, req: Request, res: Response, next: NextFunctio
       return res.status(500).json({ message: 'Something went wrong.' });
   }
 }
+
 
 export default errorHandler;

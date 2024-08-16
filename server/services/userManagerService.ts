@@ -3,6 +3,7 @@ import { memoryDb } from '../storage/memoryDb';
 import { UserDto } from '../models/userDto';
 import { ConflictError, AuthenticationError, NotFoundError } from '../errors/customErrors';
 import authService from './authService';
+import { ErrorMessages } from '../errors/errorMessages';
 
 class UserManagerService {
   async registerUser(userDto: UserDto): Promise<{ username: string; email: string; type: string }> {
