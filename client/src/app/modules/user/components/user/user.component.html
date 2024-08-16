@@ -1,5 +1,6 @@
-<app-user-form 
-  [userForm]="userForm" 
-  [isLoading]="isLoading" 
+
+<app-user-form
+  [userForm]="userForm"
+  [isLoading]="(isLoading$ | async) ?? false"
   (submitUser)="onSubmit($event)">
 </app-user-form>

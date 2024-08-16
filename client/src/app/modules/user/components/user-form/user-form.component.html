@@ -2,7 +2,7 @@
     <div>
       <label for="username">Username</label>
       <input id="username" type="text" formControlName="username" />
-      <div *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched">
+      <div *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.dirty">
         Username is required and must be between 3 and 24 characters.
       </div>
     </div>
@@ -10,7 +10,7 @@
     <div>
       <label for="email">Email</label>
       <input id="email" type="email" formControlName="email" />
-      <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+      <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.dirty">
         Enter a valid email.
       </div>
     </div>
@@ -26,7 +26,7 @@
     <div>
       <label for="password">Password</label>
       <input id="password" type="password" formControlName="password" />
-      <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+      <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.dirty">
         Password is required and must be between 5 and 24 characters, contain upper and lower case letters, and at least one special character.
       </div>
     </div>
