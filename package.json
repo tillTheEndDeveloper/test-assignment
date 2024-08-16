@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "install": "npm install --prefix client && npm install --prefix server",
+    "install": "cd client && npm install && cd ../server && npm install",
     "start-server": "cd server && npm start",     
     "start-client": "cd client && ng serve",      
     "start": "concurrently \"npm run start-server\" \"npm run start-client\""  
