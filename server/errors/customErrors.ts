@@ -1,10 +1,11 @@
 import { ErrorTypes } from './errorTypes';
 import { ErrorMessages } from './errorMessages';
 
-class BaseAppError extends Error {
+abstract class BaseAppError extends Error {
   constructor(public message: ErrorMessages, public name: ErrorTypes) {
     super(message);
-    this.stack = new Error().stack;
+    this.name = name; 
+    Error.captureStackTrace(this, this.constructor); 
   }
 }
 

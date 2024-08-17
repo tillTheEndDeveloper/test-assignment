@@ -13,6 +13,10 @@ class UserManagerService {
       throw new ConflictError('User already exists');
     }
 
+    if (memoryDb.emailExists(email)) {
+      throw new ConflictError('User already exists');
+    }
+
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
 

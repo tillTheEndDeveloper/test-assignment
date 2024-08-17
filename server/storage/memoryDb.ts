@@ -21,6 +21,14 @@ class MemoryDb {
   userExists(username: string): boolean {
     return !!this.db[username];
   }
+
+  getUserByEmail(email: string): UserEntry | undefined {
+    return Object.values(this.db).find(user => user.email === email);
+  }
+
+  emailExists(email: string): boolean {
+    return !!this.getUserByEmail(email);
+  }
 }
 
 export const memoryDb = new MemoryDb();
